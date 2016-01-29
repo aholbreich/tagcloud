@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />	
+	<meta name="description" content="Свободные новости России и мира - N2RU.info. Независимые, беспристрастные, проверяемые, открытые новости." />
+	<meta name="keywords" content="Свободные новости,новости,теги, News, n2ru" />
+	<meta name="Language" content="ru-ru" />
+    <meta name="Robots" content="All" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Pligg" />
+   
+	<link rel="stylesheet" type="text/css" href="/templates/n2ru/css/bootstrap.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="/templates/n2ru/css/style.css" media="screen" />
+	<!--  
+	<link rel="stylesheet" type="text/css" href="/templates/n2ru/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/templates/n2ru/css/jquery.pnotify.css" media="screen" />
+	-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous" />
+
+	<title>Облако тегов |  Свободные новости - n2ru</title>
+
+	<link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+</head>
+<body dir="ltr"  >
+
+			
+<div class="navbar navbar-static-top">
+	<div class="navbar-inner">
+		<div class="container">
+			
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</a>
+			<a class="brand" href="http://n2ru.info">Свободные новости - n2ru</a>
+							<div class="btn-group pull-right">
+					<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+		                <img src="http://n2ru.info/avatars/user_uploaded/4_32.jpg" width="16px" height="16px" class="img-circle" onerror="this.src='/avatars/Avatar_32.png'; this.title='Loading...';"/> &nbsp;  shuron
+						<span class="caret"></span>
+					</a>
+
+					<ul class="dropdown-menu">
+												<li><a href="/user/" class="navbut">Профиль</a></li>
+						<li><a href="/profile/" class="navbut">Настройки</a></li>
+						<li><a href="/user/history/shuron/" class="navbut">Добавленные</a></li>
+						<li><a href="/user/commented/shuron/" class="navbut">Комментировал в </a></li>
+						
+						<li><a href="/user/upvoted/shuron/" class="navbut">Поддержал</a></li>
+						<li><a href="/user/downvoted/shuron/" class="navbut">Закопал</a></li>
+						
+						
+						<li><a href="/user/saved/shuron/" class="navbut">Избранные</a></li>
+												<li class="divider"></li>
+						<li><a href="/login.php?op=logout&amp;return=">Выход</a></li>
+					</ul>
+				</div>
+				<!--/$user_authenticated -->
+						<div class="nav-collapse">
+				<ul class="nav">
+					<li ><a href="http://n2ru.info">Главная</a></li>
+										<li ><a href="/upcoming/">Добавленные</a></li>
+					                    <li ><a href="/submit/">Добавить статью</a></li>
+											
+						<li ><a href="/groups/"><span>Группы</span></a></li>																		
+					
+              </ul>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+    
+    <div id="tagcloud" th:style="${'line-height:' + tags_max_pts+'px;'}">
+	
+	  <span th:each="tag : ${tags}" th:style="${'font-size:' + tag.count+'px;'}">
+		 <a th:href="${'/tag/' + tag.words}" th:text="${tag.words}">View</a>
+		&nbsp;
+	 </span>
+
+    </div>
+
+</body>
+</html>
