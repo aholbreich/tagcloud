@@ -7,7 +7,10 @@ services:
 
 script:
   - docker run -it -v $(pwd):/root/sources -w /root/sources maven:3.3.3-jdk-8 mvn clean package
-  - docker build .
+  - docker build -t freenews/tagcloud:latest .
+  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push freenews/tagcloud:latest
+ 
   
 cache:
   directories:
