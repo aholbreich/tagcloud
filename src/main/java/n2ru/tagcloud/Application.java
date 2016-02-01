@@ -16,6 +16,7 @@ public class Application {
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(Application.class, args);
+        System.out.println("Logging level"+System.getenv("LOGGING_LEVEL"));
         LOG.info("=====Test=======");
     }
 }
