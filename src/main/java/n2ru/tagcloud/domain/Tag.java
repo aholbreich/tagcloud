@@ -13,6 +13,7 @@ public class Tag {
 	@Column(name = "tag_words")
 	private String words;
 	private Integer count;
+	private int fontsize;
 	
 	public String getWords() {
 		return words;
@@ -26,6 +27,13 @@ public class Tag {
 	public void setCount(Integer count) {
 		this.count = count;
 	}
+	public int getFontsize() {
+		return fontsize;
+	}
+	public void setFontsize(int fontsize) {
+		this.fontsize = fontsize;
+	}
+	
 	
 	
 }

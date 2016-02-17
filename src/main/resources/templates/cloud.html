@@ -1,11 +1,8 @@
-
-
     
-    <div id="tagcloud" th:style="${'line-height:' + tags_max_pts+'px;'}">
+<div id="tagcloud" th:style="${'line-height:' + tags_max_pts+'px;'}">
 	
 	  <span th:each="tag : ${tags}" th:style="${'font-size:' + tag.count+'px;'}">
 		 <a th:href="${'/tag/' + tag.words}" th:text="${tag.words}">View</a>
 		&nbsp;
 	 </span>
-
-    </div>
+</div>
