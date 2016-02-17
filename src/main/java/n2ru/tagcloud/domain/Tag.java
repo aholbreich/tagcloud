@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity()
 @Table(name="pligg_tag_cache")
@@ -13,6 +14,7 @@ public class Tag {
 	@Column(name = "tag_words")
 	private String words;
 	private Integer count;
+	@Transient
 	private int fontsize;
 	
 	public String getWords() {
