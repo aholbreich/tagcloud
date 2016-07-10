@@ -1,7 +1,7 @@
 FROM java:8-jre
 VOLUME /tmp
-ADD target/tagcloud-0.0.1-SNAPSHOT.jar app.jar
-#Justo to have modificsation time.
+ADD target/tagcloud-0.0.2-SNAPSHOT.jar app.jar
+#Jus to have modification time.
 RUN bash -c 'touch /app.jar' 
 EXPOSE 8080
 ENV LOGGING_LEVEL ="ERROR"

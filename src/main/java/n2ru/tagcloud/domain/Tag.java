@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity()
-@Table(name="pligg_tag_cache")
+@Table(name = "pligg_tag_cache")
 public class Tag {
 
 	@Id
@@ -16,26 +16,40 @@ public class Tag {
 	private Integer count;
 	@Transient
 	private int fontsize;
-	
+
+	public Tag(String words, Integer count, int fontsize) {
+		super();
+		this.words = words;
+		this.count = count;
+		this.fontsize = fontsize;
+	}
+
+	public Tag() {
+		super();
+	}
+
 	public String getWords() {
 		return words;
 	}
+
 	public void setWords(String words) {
 		this.words = words;
 	}
+
 	public Integer getCount() {
 		return count;
 	}
+
 	public void setCount(Integer count) {
 		this.count = count;
 	}
+
 	public int getFontsize() {
 		return fontsize;
 	}
+
 	public void setFontsize(int fontsize) {
 		this.fontsize = fontsize;
 	}
-	
-	
-	
+
 }
