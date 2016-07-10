@@ -15,6 +15,8 @@ public class TagCachedLoader {
 
 	public static final Logger LOG = LoggerFactory.getLogger(TagCachedLoader.class);
 	
+	private static final int CACHE_MINUTES = 10;
+	
 	@Autowired
 	private TagDao tagDao;
 
@@ -24,10 +26,10 @@ public class TagCachedLoader {
 
 	public List<Tag> getTagList() {
 
-		if (LocalDateTime.now().minusMinutes(1).isAfter(lastLoad)) {
+		if (LocalDateTime.now().minusMinutes(10).isAfter(lastLoad)) {
 			cached = tagDao.getTops();
 			lastLoad = LocalDateTime.now();
-			LOG.debug("Reload form DB");
+			LOG.debug("Reload from DB");
 		}
 		return cached;
 	}
