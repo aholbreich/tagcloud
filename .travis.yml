@@ -5,12 +5,27 @@ sudo: required
 services:
   - docker
 
+env:
+  global:
+    - COMMIT=${TRAVIS_COMMIT::8}
+
 script:
   - docker run -it -v $(pwd):/root/sources -w /root/sources maven:3.3.3-jdk-8 mvn clean package
-  - docker build -t n2ru/tagcloud:latest .
-  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker push n2ru/tagcloud:latest
- 
+
+#script:
+#  - docker run -it -v $(pwd):/root/sources -w /root/sources maven:3.3.3-jdk-8 mvn clean package
+#  - docker build -t n2ru/tagcloud:latest .
+#  - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+#  - docker push n2ru/tagcloud:latest
+
+after_success:
+  - docker login -e $DOCKER_EMAIL -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  - export REPO=n2ru/tagcloud
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+  - docker build -f Dockerfile -t $REPO:$COMMIT .
+  - docker tag $REPO:$COMMIT $REPO:$TAG
+#  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $REPO 
   
 cache:
   directories:
