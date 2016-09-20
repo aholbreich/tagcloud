@@ -20,13 +20,13 @@ public class TagCachedLoader {
 	@Autowired
 	private TagDao tagDao;
 
-	private LocalDateTime lastLoad = LocalDateTime.now().minusDays(10);
+	private LocalDateTime lastLoad = LocalDateTime.now().minusMinutes(CACHE_MINUTES);
 
 	private List<Tag> cached = null;
 
 	public List<Tag> getTagList() {
 
-		if (LocalDateTime.now().minusMinutes(10).isAfter(lastLoad)) {
+		if (cached ==null || LocalDateTime.now().minusMinutes(CACHE_MINUTES).isAfter(lastLoad)) {
 			cached = tagDao.getTops();
 			lastLoad = LocalDateTime.now();
 			LOG.debug("Reload from DB");

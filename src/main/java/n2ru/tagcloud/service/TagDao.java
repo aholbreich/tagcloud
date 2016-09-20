@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 public interface TagDao extends CrudRepository<Tag, Long> {
 
 	// http://docs.spring.io/spring-data/data-jpa/docs/current/reference/html/#jpa.repositories
-	@Query(value = "SELECT * from pligg_tag_cache limit 50", nativeQuery = true)
+	@Query(value = "SELECT * from pligg_tag_cache limit 60", nativeQuery = true)
 	public List<Tag> getTops();
 
 }

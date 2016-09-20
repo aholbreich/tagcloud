@@ -5,7 +5,7 @@
 
 	<groupId>n2ru</groupId>
 	<artifactId>tagcloud</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.3-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>tagcloud</name>

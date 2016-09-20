@@ -1,6 +1,6 @@
 FROM java:8-jre
 VOLUME /tmp
-ADD target/tagcloud-0.0.2-SNAPSHOT.jar app.jar
+ADD target/tagcloud-0.0.3-SNAPSHOT.jar app.jar
 #Jus to have modification time.
 RUN bash -c 'touch /app.jar' 
 EXPOSE 8080
