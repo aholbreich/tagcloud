@@ -25,11 +25,12 @@ public class TagCachedLoader {
 	private List<Tag> cached = null;
 
 	public List<Tag> getTagList() {
-
-		if (cached ==null || LocalDateTime.now().minusMinutes(CACHE_MINUTES).isAfter(lastLoad)) {
+		LOG.debug("Getting tags...");
+		if (cached ==null || cached.isEmpty()|| LocalDateTime.now().minusMinutes(CACHE_MINUTES).isAfter(lastLoad)) {
+			LOG.info("Chache not presend or expired. Loading form DB");
 			cached = tagDao.getTops();
 			lastLoad = LocalDateTime.now();
-			LOG.debug("Reload from DB");
+			LOG.info("Fetched from DB, elements {}", cached!=null?cached.size():0);
 		}
 		return cached;
 	}

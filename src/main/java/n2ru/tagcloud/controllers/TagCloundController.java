@@ -29,7 +29,11 @@ public class TagCloundController {
 		
 		List<Tag> tags = loader.getTagList();
 
-		
+		if(tags==null || tags.isEmpty()){
+			LOG.warn("Loaded list was null, using dummy tag");
+			tags.add(new Tag("Росссия", 10, 10)); //falback
+		}
+	
 		Tag mostused= tags.stream().max((t1, t2) -> Integer.compare( t1.getCount(), t2.getCount())).get(); 
 		
 		int gap = TAG_MAX_FONT_SIZE - TAG_MIN_FONT_SIZE;
